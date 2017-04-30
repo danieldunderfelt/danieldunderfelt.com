@@ -1,11 +1,11 @@
 import React from 'react'
 import Page from '../components/Page'
 import Introduction from '../components/Introduction'
-import ChatWrapper from '../components/chat/ChatWrapper'
+import Chat from '../components/chat/Chat'
 
 export default () => (
   <Page>
     <Introduction />
-    <ChatWrapper />
+    <Chat />
   </Page>
 )

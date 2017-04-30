@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { observer, Provider } from 'mobx-react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import state from '../state'
+import createState from '../state'
 
 const PageWrapper = styled.div`
   padding: 3em 2em 7em;
 `
+
+const state = createState()
 
 @observer
 class Page extends Component {
@@ -30,7 +32,7 @@ class Page extends Component {
           <meta name="twitter:image:alt" content="Media Match LIVE"/>
         </Head>
 
-        <Provider store={ state() }>
+        <Provider store={ state }>
           <PageWrapper>
             { this.props.children }
           </PageWrapper>
@@ -43,13 +45,17 @@ class Page extends Component {
           }
           body {
             margin: 0;
-            background: #efefef;
+            background: #dedede;
           }
           * {
             box-sizing: border-box;
           }
           h1 {
             font-family: 'Rubik Mono One', sans-serif;
+          }
+          p {
+            line-height: 1.5;
+            font-size: 1.125em;
           }
           .root-wrapper {
             height: 100%;

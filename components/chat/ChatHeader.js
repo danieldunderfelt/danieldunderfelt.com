@@ -21,8 +21,7 @@ const HeaderImage = styled.img`
 const RecipientName = styled.h2`
   color: white;
   font-weight: 400;
-  text-transform: uppercase;
-  font-size: 1.1em;
+  font-size: 1em;
   vertical-align: middle;
   display: inline-block;
 `
