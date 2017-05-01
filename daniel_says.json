@@ -1,3 +1,34 @@
 {
-  "greeting": ["Hi there!", "Hi!", "Hey!", "What's up", "sup", "Yo!"]
+  "initialMessage": [
+    "Oh, a visitor! Hi, I'm Daniel. Ask me anything.",
+    "Welcome traveller! I'm Daniel. Nice to meet you."
+  ],
+  "greeting": {
+    "positive": ["Hi there!", "Hi!", "Hey!", "What's up", "sup", "Yo!"],
+    "negative": ["Hi! Just FYI, I'll block you if you are being rude."]
+  },
+  "topics": {
+    "(?:who)(?:[\\s\\S]*)(?=you)": ["I'm Daniel Dunderfelt, a developer from Helsinki! What's up?"],
+    "work": ["I work at [Mirum Agency](https://www.mirumagency.com/helsinki), in Helsinki. It's a pretty sweet gig!"],
+    "email": ["You can email me at dunderfeltdaniel@gmail.com."],
+    "twitter": ["My Twitter handle is [@ddunderfelt](https://twitter.com/ddunderfelt)!"],
+    "tweet": ["My Twitter handle is [@ddunderfelt](https://twitter.com/ddunderfelt)!"],
+    "facebook": ["I Deleted my account and never looked back. You should do the same."],
+    "blog": ["Sure, I write the occasional blog post on [Medium](https://medium.com/@ddunderfelt)!"],
+    "github": ["My GitHub is [right here](https://github.com/danieldunderfelt)! Fork away."],
+    "reddit": ["hahah dream on"],
+    "4chan": ["Who's 4chan? Is it that notorious hacker?"],
+    "real": ["Of course I'm real. Or are you being philosophic?"],
+    "(?:are)(?:[\\s\\S]*)(?=you)(?:[\\s\\S]*)(?=robot)": [
+      "No I'm a developer from Helsinki. While it may happen in the future, robots are not yet able to take my job!",
+      "What kind of a question is that?",
+      "..uh, am I acting robotically?",
+      "That would be so cool! I could shoot lasers from my eyes and lift heavy things. Probably."
+    ]
+  },
+  "noAnswer": ["Sorry, I don't know how to answer that...", "I'm not sure what you mean", "What are you getting at?", "Can you be more specific?"],
+  "defaultStatement": {
+    "positive": ["Seriously?", "Cool beans", "Dunno... maybe?", "Right on!", "Not sure..."],
+    "negative": ["I doubt it.", "If you're being rude I'll block you.", "No.", "I don't care", "Calm down!"]
+  }
 }

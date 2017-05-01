@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import { reaction } from 'mobx'
 import styled from 'styled-components'
 import Avatar from './Avatar'
+import { Scrollbars } from 'react-custom-scrollbars'
 
 const MessageWrapper = styled.div`
   position: relative;
   color: white;
   height: 26em;
-  background: white;
+  background: #f6f6f6;
   overflow: hidden;
 `
 
@@ -16,6 +18,11 @@ const MessageStack = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
+  //max-height: 100%;
+  overflow: hidden;
+`
+
+const MessageContainer = styled.div`
   padding: .75em .75em 1em;
   display: flex;
   flex-direction: column;
@@ -26,13 +33,13 @@ const Message = styled.article`
   margin-bottom: .5em;
   max-width: 90%;
   display: flex;
+  align-items: flex-start;
   align-self: ${({ from = 'receiver' }) => from === 'receiver' ? 'flex-start' : 'flex-end' };
 `
 
 const MessageAvatar = styled(Avatar)`
-  width: 1.5em;
-  height: 1.5em;
-  margin-top: .15em;
+  width: 1.45em;
+  height: 1.45em;
 `
 
 const MessageBubble = styled.div`
@@ -41,6 +48,10 @@ const MessageBubble = styled.div`
   font-size: .9em;
   border-radius: .5em;
   background: ${({ colored = false }) => colored ? '#C7E5FF' : '#dedede' };
+  
+  p {
+    margin: 0;
+  }
 `
 
 const IndicateWriting = styled.span`
@@ -61,19 +72,21 @@ class MessageDisplay extends Component {
     return (
       <MessageWrapper>
         <MessageStack>
-          { messages.map(message => (
-            <Message
-              key={ message.timestamp }
-              from={ message.from === 'daniel' ? 'receiver' : 'sender' }>
-              { message.from === 'daniel' && (
-                <MessageAvatar background="white" />
-              )}
-              <MessageBubble
-                colored={ message.from === 'daniel' }>
-                { message.body }
-              </MessageBubble>
-            </Message>
-          ))}
+          <MessageContainer>
+            { messages.map(message => (
+              <Message
+                key={ message.timestamp }
+                from={ message.from === 'daniel' ? 'receiver' : 'sender' }>
+                { message.from === 'daniel' && (
+                  <MessageAvatar background="white"/>
+                )}
+                <MessageBubble
+                  dangerouslySetInnerHTML={{ __html: message.body }}
+                  colored={ message.from === 'daniel' }>
+                </MessageBubble>
+              </Message>
+            ))}
+          </MessageContainer>
         </MessageStack>
         { danielIsWriting && (
           <IndicateWriting>

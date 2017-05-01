@@ -45,7 +45,8 @@ class Page extends Component {
           }
           body {
             margin: 0;
-            background: #dedede;
+            background: #ddefff;
+            min-height: 100%;
           }
           * {
             box-sizing: border-box;

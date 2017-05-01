@@ -9,6 +9,7 @@ const Avatar = styled.div`
   display: inline-block;
   margin-right: .75em;
   vertical-align: middle;
+  flex: 1 0 auto;
 `
 
 const HeaderImage = styled.img`

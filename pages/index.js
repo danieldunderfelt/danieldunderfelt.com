@@ -5,7 +5,6 @@ import Chat from '../components/chat/Chat'
 
 export default () => (
   <Page>
-    <Introduction />
     <Chat />
   </Page>
 )

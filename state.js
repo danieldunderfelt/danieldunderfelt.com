@@ -4,7 +4,9 @@ export default () => {
 
   const store = observable({
     messages: [],
-    danielIsWriting: false
+    danielIsWriting: false,
+    greeted: 0,
+    userWasRude: 0
   })
 
   return store

@@ -1,7 +1,11 @@
 import { collection } from 'mobx-app'
 import { action } from 'mobx'
 import voca from 'voca'
-import _ from 'lodash'
+import marked from 'marked'
+
+marked.setOptions({
+  tables: false
+})
 
 export default state => {
   const messagesCollection = collection(state.messages)
@@ -16,7 +20,8 @@ export default state => {
     if(voca.isBlank(messageText)) return
 
     messagesCollection.addItem({
-      body: messageText,
+      body: marked(messageText),
+      rawBody: messageText,
       from,
       timestamp: Date.now()
     })

@@ -13,7 +13,7 @@ const InputArea = styled.form`
 
 const ChatInput = styled.input`
   padding: .5em 4.5em .5em .75em;
-  background: #efefef;
+  background: white;
   border: 0;
   display: block;
   width: 100%;

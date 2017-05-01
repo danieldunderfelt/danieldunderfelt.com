@@ -5,33 +5,32 @@ import nlp from 'compromise'
 import respond from './chat/respond'
 import question from './chat/question'
 import statement from './chat/statement'
+import greeting from './chat/greeting'
+import isGreeting from './chat/isGreeting'
 
 export default state => {
   const sendResponse = respond(state)
-
-  const chatState = {
-    greeted: 0,
-    userRude: 0
-  }
 
   const disposer = state.messages.observe(change => {
     if(_.get(change, 'added', []).length > 0) {
       const message = _.get(change, 'added[0]')
 
       if(message.from !== 'daniel') {
-        onMessage(message.body)
+        onMessage(message.rawBody)
       }
     }
   })
 
   function onMessage(message) {
     const analysis = nlp(message)
-    let response = 'Hello!'
+    let response = ''
 
-    if(analysis.questions().data().length > 0) {
-      response = question(analysis, chatState)
+    if(isGreeting(message)) {
+      response = greeting(message, state)
+    } else if(analysis.questions().data().length > 0) {
+      response = question(analysis, state)
     } else if(analysis.statements().data().length > 0) {
-      response = statement(analysis, chatState)
+      response = statement(analysis, state)
     }
 
     sendResponse(response)
