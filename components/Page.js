@@ -14,22 +14,21 @@ const state = createState()
 class Page extends Component {
 
   render() {
-
     return (
       <div className="root-wrapper">
         <Head>
           <title>Daniel Dunderfelt</title>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
-          <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One|Work+Sans:100,300,400,700" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet" />
           {/*<link rel='shortcut icon' type='image/x-icon' href='/static/favicon.png'/>*/}
-          <meta property="og:title" content="Media Match LIVE"/>
-          <meta property="og:description" content="Website for the Media Match app with live statistics."/>
-          <meta property="og:image" content="https://mediamatch.live/static/mediamatch_share.jpg"/>
-          <meta property="og:url" content="https://mediamatch.live"/>
+          <meta property="og:title" content="Daniel Dunderfelt"/>
+          <meta property="og:description" content="Personal website for Daniel Dunderfelt"/>
+          <meta property="og:image" content="https://mediamatch.live/static/images/me.jpg"/>
+          <meta property="og:url" content="https://danieldunderfelt.com"/>
           <meta name="twitter:card" content="summary_large_image"/>
 
-          <meta property="og:site_name" content="Media Match LIVE"/>
-          <meta name="twitter:image:alt" content="Media Match LIVE"/>
+          <meta property="og:site_name" content="Daniel Dunderfelt"/>
+          <meta name="twitter:image:alt" content="Daniel Dunderfelt"/>
         </Head>
 
         <Provider store={ state }>
@@ -57,6 +56,9 @@ class Page extends Component {
           p {
             line-height: 1.5;
             font-size: 1.125em;
+          }
+          strong {
+            font-weight: 700;
           }
           .root-wrapper {
             height: 100%;

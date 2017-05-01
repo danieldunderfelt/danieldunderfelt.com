@@ -1,8 +1,7 @@
 {
-  "name": "dd",
+  "name": "danieldunderfelt-com",
   "version": "1.0.0",
   "description": "Daniel Dunderfelt's site",
-  "main": "index.js",
   "author": "Daniel Dunderfelt",
   "license": "MIT",
   "scripts": {
