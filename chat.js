@@ -1,12 +1,13 @@
 import { reaction } from 'mobx'
 import _ from 'lodash'
 import sentiment from 'sentiment'
-import messageActions from './actions/messageActions'
 import nlp from 'compromise'
-import script from './daniel_says.json'
+import respond from './chat/respond'
+import question from './chat/question'
+import statement from './chat/statement'
 
 export default state => {
-  const actions = messageActions(state)
+  const sendResponse = respond(state)
 
   const chatState = {
     greeted: 0,
@@ -24,16 +25,16 @@ export default state => {
   })
 
   function onMessage(message) {
-    const messageSentiment = sentiment(message)
     const analysis = nlp(message)
+    let response = 'Hello!'
 
-    console.log(messageSentiment.score)
-
-    if(messageSentiment.score < 0) {
-      actions.addMessage('Fuck off until you can be polite.', 'daniel')
-    } else {
-      actions.addMessage('Hello!', 'daniel')
+    if(analysis.questions().data().length > 0) {
+      response = question(analysis, chatState)
+    } else if(analysis.statements().data().length > 0) {
+      response = statement(analysis, chatState)
     }
+
+    sendResponse(response)
   }
 
   return disposer

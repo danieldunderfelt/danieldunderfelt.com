@@ -3,7 +3,8 @@ import { observable } from 'mobx'
 export default () => {
 
   const store = observable({
-    messages: []
+    messages: [],
+    danielIsWriting: false
   })
 
   return store

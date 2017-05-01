@@ -33,7 +33,7 @@ const SendButton = styled.button`
   color: white;
   font-size: .75em;
   border: 0;
-  border-radius: .25em;
+  border-radius: .5em;
   text-transform: uppercase;
   padding: 1em .75em;
   position: absolute;

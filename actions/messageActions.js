@@ -1,9 +1,10 @@
 import { collection } from 'mobx-app'
-import { toJS } from 'mobx'
+import { action } from 'mobx'
 import voca from 'voca'
+import _ from 'lodash'
 
-export default store => {
-  const messagesCollection = collection(store.messages)
+export default state => {
+  const messagesCollection = collection(state.messages)
 
   function addMessage(body, from = 'anonymous') {
     const messageText = voca
@@ -21,7 +22,12 @@ export default store => {
     })
   }
 
+  const toggleIsWriting = action('toggleIsWriting', (setTo = true) => {
+    state.danielIsWriting = setTo
+  })
+
   return {
-    addMessage
+    addMessage,
+    toggleIsWriting
   }
 }

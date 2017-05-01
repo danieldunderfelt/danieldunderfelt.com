@@ -17,11 +17,7 @@ const ChatWrapper = styled.div`
 @observer
 class Chat extends Component {
 
-  chat
-
-  componentDidMount() {
-    this.chat = chat(this.props.store)
-  }
+  chat = (chat(this.props.store))
 
   componentWillUnmount() {
     // Dispose message observer
