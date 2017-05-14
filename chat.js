@@ -7,19 +7,44 @@ import question from './chat/question'
 import statement from './chat/statement'
 import greeting from './chat/greeting'
 import isGreeting from './chat/isGreeting'
+import autoChatMessage from './chat/autoChat'
+import messageActions from './actions/messageActions'
 
 export default state => {
   const sendResponse = respond(state)
+  const actions = messageActions(state)
 
-  const disposer = state.messages.observe(change => {
+  let disposer
+  let autoChat = 0
+  let autoTimeout = _.random(20000, 30000)
+
+  function createAutoChatter() {
+    clearInterval(autoChat)
+
+    autoChat = setTimeout(() => {
+      sendResponse(autoChatMessage())
+        .then(responseTime => {
+          autoTimeout = responseTime + _.random(10000, 30000)
+        })
+        .then(createAutoChatter)
+    }, autoTimeout)
+  }
+
+  function onChange(change) {
     if(_.get(change, 'added', []).length > 0) {
       const message = _.get(change, 'added[0]')
 
       if(message.from !== 'daniel') {
+        clearInterval(autoChat)
+        clearTimeout(state.responseTimer)
+        actions.toggleIsWriting(false)
+
         onMessage(message.rawBody)
+
+        setTimeout(createAutoChatter, 10000)
       }
     }
-  })
+  }
 
   function onMessage(message) {
     const analysis = nlp(message)
@@ -34,6 +59,11 @@ export default state => {
     }
 
     sendResponse(response)
+  }
+
+  if(typeof window !== 'undefined') {
+    createAutoChatter()
+    disposer = state.messages.observe(onChange)
   }
 
   return disposer

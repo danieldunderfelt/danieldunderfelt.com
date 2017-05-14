@@ -18,7 +18,7 @@
     "github": ["My GitHub is [right here](https://github.com/danieldunderfelt)! Fork away."],
     "reddit": ["hahah dream on"],
     "4chan": ["Who's 4chan? Is it that notorious hacker?"],
-    "real": ["Of course I'm real. Or are you being philosophic?"],
+    "(?:you)(?:[\\s\\S]*)(?=real)": ["Of course I'm real. Or are you being philosophic?"],
     "(?:are)(?:[\\s\\S]*)(?=you)(?:[\\s\\S]*)(?=robot)": [
       "No I'm a developer from Helsinki. While it may happen in the future, robots are not yet able to take my job!",
       "What kind of a question is that?",
@@ -28,7 +28,33 @@
   },
   "noAnswer": ["Sorry, I don't know how to answer that...", "I'm not sure what you mean", "What are you getting at?", "Can you be more specific?"],
   "defaultStatement": {
-    "positive": ["Seriously?", "Cool beans", "Dunno... maybe?", "Right on!", "Not sure..."],
-    "negative": ["I doubt it.", "If you're being rude I'll block you.", "No.", "I don't care", "Calm down!"]
-  }
+    "positive": [
+      "Seriously?",
+      "Cool beans",
+      "Dunno... maybe?",
+      "Right on!",
+      "Not sure...",
+      "Yup!",
+      "That's alright tho :D"
+    ],
+    "negative": [
+      "I doubt it.",
+      "If you're being rude I'll block you.",
+      "Really?",
+      "I don't care",
+      "Well alright then",
+      "You're really gonna be like that?"
+    ]
+  },
+  "autoChat": [
+    "...you there?",
+    "you can ask me about my work, my contact details... whatever",
+    "Hello?",
+    "Really, feel free to ask me about anything :D I can't answer everything of course :P",
+    "maybe ask me about my twitter account?",
+    "interested in my blog?",
+    "just... write your message in the input field below :)",
+    "you still there?",
+    "My main thing is I'm a developer."
+  ]
 }

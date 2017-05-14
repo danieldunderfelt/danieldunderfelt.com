@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "now && now alias"
   },
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.22.0",
@@ -27,5 +28,8 @@
     "sentiment": "^4.0.0",
     "styled-components": "^1.4.5",
     "voca": "^1.3.0"
+  },
+  "now": {
+    "alias": "danieldunderfelt.com"
   }
 }

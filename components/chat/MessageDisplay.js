@@ -78,7 +78,7 @@ class MessageDisplay extends Component {
                 key={ message.timestamp }
                 from={ message.from === 'daniel' ? 'receiver' : 'sender' }>
                 { message.from === 'daniel' && (
-                  <MessageAvatar background="white"/>
+                  <MessageAvatar background="#f6f6f6"/>
                 )}
                 <MessageBubble
                   dangerouslySetInnerHTML={{ __html: message.body }}

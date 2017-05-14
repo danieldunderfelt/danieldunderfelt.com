@@ -1,3 +1,4 @@
+import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
 
@@ -17,7 +18,7 @@ class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>My page</title>
+          <title>Daniel Dunderfelt</title>
         </Head>
         <body>
           <Main />
