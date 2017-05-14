@@ -26,6 +26,11 @@ class Chat extends Component {
 
   componentDidMount() {
     const { store } = this.props
+
+    if(typeof window === 'undefined') {
+      return
+    }
+
     const initMessage = _.sample(_.get(daniel_says, 'initialMessage', []))
 
     if(store.greeted < 1) {
